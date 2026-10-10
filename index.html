@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heejin Shin — KAIST MSIT</title>
+<meta name="description" content="Personal page of Heejin Shin, KAIST IT Management master's student.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f13;
+    --bg-soft: #16181f;
+    --ink: #f2f0ea;
+    --muted: #a7a9b3;
+    --accent: #7dd87d;
+    --accent-2: #6fc3ff;
+    --card: #1a1d26;
+    --line: #2a2e3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Space Grotesk", "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(90px); opacity: .35;
+    pointer-events: none; animation: drift 14s ease-in-out infinite alternate;
+  }
+  .blob.b1 { width: 420px; height: 420px; background: #2c7a4b; top: -120px; right: -100px; }
+  .blob.b2 { width: 340px; height: 340px; background: #1d4e89; bottom: -80px; left: -120px; animation-delay: -6s; }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-40px, 50px) scale(1.12); }
+  }
+  .kicker {
+    color: var(--accent); letter-spacing: .28em; text-transform: uppercase;
+    font-size: .8rem; margin-bottom: 18px;
+  }
+  h1.name {
+    font-size: clamp(3rem, 9vw, 6.2rem);
+    line-height: 1.02; font-weight: 700; letter-spacing: -0.02em;
+  }
+  h1.name .ko { color: var(--accent-2); }
+  .tagline { margin-top: 22px; font-size: 1.15rem; color: var(--muted); max-width: 34em; }
+  .tagline strong { color: var(--ink); font-weight: 500; }
+  .cta-row { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 999px;
+    text-decoration: none; font-weight: 500; font-size: .95rem;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); color: #0c120c; }
+  .btn.ghost { border: 1px solid var(--line); color: var(--ink); }
+  .scroll-hint {
+    position: absolute; bottom: 28px; left: 24px; color: var(--muted);
+    font-size: .8rem; letter-spacing: .2em; text-transform: uppercase;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+  /* ---------- sections ---------- */
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+  h2.sec-title {
+    font-size: .85rem; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 28px;
+  }
+  .about p { font-size: 1.1rem; color: var(--muted); max-width: 40em; margin-bottom: 1em; }
+  .about p strong { color: var(--ink); font-weight: 500; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px 24px; transition: transform .18s ease, border-color .18s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card .emoji { font-size: 1.9rem; }
+  .card h3 { margin: 12px 0 8px; font-size: 1.05rem; }
+  .card p { color: var(--muted); font-size: .95rem; }
+
+  .now-list { list-style: none; }
+  .now-list li {
+    padding: 16px 0; border-bottom: 1px dashed var(--line);
+    display: flex; gap: 16px; align-items: baseline;
+  }
+  .now-list .date { color: var(--accent); font-size: .85rem; white-space: nowrap; min-width: 92px; }
+  .now-list p { color: var(--muted); }
+  .now-list p strong { color: var(--ink); font-weight: 500; }
+
+  footer {
+    padding: 60px 0 48px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .9rem;
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    section { padding: 60px 0; }
+    .now-list li { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap">
+    <p class="kicker">KAIST · IT Management · Fall 2026</p>
+    <h1 class="name">Heejin Shin<br><span class="ko">신희진</span></h1>
+    <p class="tagline">
+      IT planner working at the intersection of <strong>technology &amp; business</strong> —
+      currently pursuing a master's in IT Management at KAIST while exploring
+      digital transformation, strategy, and investing.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#about">About me</a>
+      <a class="btn ghost" href="https://github.com/zzangparty-blip" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+  <p class="scroll-hint">Scroll ↓</p>
+</header>
+
+<div class="wrap">
+  <section id="about" class="about">
+    <h2 class="sec-title">About</h2>
+    <p>
+      Hi! I'm <strong>Heejin Shin (신희진)</strong>, a graduate student in
+      <strong>IT Management at KAIST</strong> and an IT professional with
+      experience in IT planning and digital transformation.
+    </p>
+    <p>
+      I like turning complex systems into clear plans — whether that's an
+      enterprise IT roadmap, a product idea, or a personal investment thesis.
+      This page is my little corner of the web for the Fall 2026 term.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Interests</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🧭</div>
+        <h3>IT Strategy &amp; Planning</h3>
+        <p>Roadmaps, enterprise architecture, and making technology choices that serve business goals.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">⚙️</div>
+        <h3>Digital Transformation</h3>
+        <p>How organizations actually change — people, process, and platforms together.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">📈</div>
+        <h3>Investing</h3>
+        <p>Member of an investment study club. Currently fascinated by semiconductors and AI infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Now</h2>
+    <ul class="now-list">
+      <li>
+        <span class="date">Fall 2026</span>
+        <p><strong>KAIST IT Management</strong> — taking courses, building things, meeting sharp people.</p>
+      </li>
+      <li>
+        <span class="date">Oct 2026</span>
+        <p>Preparing a <strong>seminar talk</strong> on our investment club's second-half plan.</p>
+      </li>
+      <li>
+        <span class="date">Always</span>
+        <p>Learning in public — this page included. Feedback welcome via GitHub.</p>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+    <span>© 2026 Heejin Shin · Built with plain HTML &amp; CSS</span>
+    <span><a href="https://github.com/zzangparty-blip" target="_blank" rel="noopener">github.com/zzangparty-blip</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
