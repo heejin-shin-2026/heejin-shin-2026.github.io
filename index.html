@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heejin Shin — KAIST MSIT</title>
-<meta name="description" content="Personal page of Heejin Shin, KAIST IT Management master's student.">
+<title>신희진 — KAIST IT경영</title>
+<meta name="description" content="KAIST IT경영 석사과정 신희진의 개인 페이지.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -29,6 +29,25 @@
     overflow-x: hidden;
   }
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- language switch ---------- */
+  .lang-switch {
+    position: fixed; top: 18px; right: 18px; z-index: 50;
+    display: flex; gap: 2px; padding: 4px;
+    background: rgba(26,29,38,.88); border: 1px solid var(--line);
+    border-radius: 999px; backdrop-filter: blur(8px);
+  }
+  .lang-switch button {
+    border: 0; background: transparent; color: var(--muted);
+    font-family: inherit; font-size: .8rem; font-weight: 500;
+    padding: 6px 14px; border-radius: 999px; cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .lang-switch button:hover { color: var(--ink); }
+  .lang-switch button.active { background: var(--accent); color: #0c120c; }
+  html[lang="ko"] .kicker { letter-spacing: .18em; }
+  html[lang="ko"] h2.sec-title { letter-spacing: .2em; }
+  html[lang="ko"] .scroll-hint { letter-spacing: .14em; }
 
   /* ---------- hero ---------- */
   header.hero {
@@ -56,7 +75,7 @@
     font-size: clamp(3rem, 9vw, 6.2rem);
     line-height: 1.02; font-weight: 700; letter-spacing: -0.02em;
   }
-  h1.name .ko { color: var(--accent-2); }
+  h1.name .name-sub { color: var(--accent-2); }
   .tagline { margin-top: 22px; font-size: 1.15rem; color: var(--muted); max-width: 34em; }
   .tagline strong { color: var(--ink); font-weight: 500; }
   .cta-row { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
@@ -114,111 +133,98 @@
   @media (max-width: 560px) {
     section { padding: 60px 0; }
     .now-list li { flex-direction: column; gap: 4px; }
+    .lang-switch { top: 12px; right: 12px; }
   }
 </style>
 </head>
 <body>
 
+<div class="lang-switch" role="group" aria-label="Language / 언어 선택">
+  <button type="button" data-setlang="ko" class="active">한</button>
+  <button type="button" data-setlang="en">EN</button>
+</div>
+
 <header class="hero">
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="wrap">
-    <p class="kicker">KAIST · IT Management · Fall 2026</p>
-    <h1 class="name">Heejin Shin<br><span class="ko">신희진</span></h1>
-    <p class="tagline">
-      IT planner working at the intersection of <strong>technology &amp; business</strong> —
-      currently pursuing a master's in IT Management at KAIST while exploring
-      digital transformation, strategy, and investing.
-    </p>
+    <p class="kicker" data-i18n="kicker">KAIST · IT경영 · 2026 가을학기</p>
+    <h1 class="name"><span data-i18n="nameMain">신희진</span><br><span class="name-sub" data-i18n="nameSub">Heejin Shin</span></h1>
+    <p class="tagline" data-i18n-html="tagline">기술과 비즈니스가 만나는 지점에서 일하는 <strong>IT 기획자</strong> — KAIST에서 IT경영 석사과정을 밟으며 디지털 전환, 전략, 투자를 탐구하고 있습니다.</p>
     <div class="cta-row">
-      <a class="btn primary" href="#about">About me</a>
+      <a class="btn primary" href="#about" data-i18n="btnAbout">소개</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/heejin-shin" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn ghost" href="https://github.com/zzangparty-blip" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn ghost" href="https://github.com/heejin-shin-2026" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
-  <p class="scroll-hint">Scroll ↓</p>
+  <p class="scroll-hint" data-i18n="scrollHint">스크롤 ↓</p>
 </header>
 
 <div class="wrap">
   <section id="about" class="about">
-    <h2 class="sec-title">About</h2>
-    <p>
-      Hi! I'm <strong>Heejin Shin (신희진)</strong>, a graduate student in
-      <strong>IT Management at KAIST</strong> and an IT professional with
-      experience in IT planning and digital transformation.
-    </p>
-    <p>
-      I like turning complex systems into clear plans — whether that's an
-      enterprise IT roadmap, a product idea, or a personal investment thesis.
-      This page is my little corner of the web for the Fall 2026 term.
-    </p>
-    <p>
-      At home, I'm a dad of two — a <strong>9-year-old son</strong> and a
-      <strong>4-year-old daughter</strong> — and we're having a blast together.
-    </p>
+    <h2 class="sec-title" data-i18n="secAbout">소개</h2>
+    <p data-i18n-html="about1">안녕하세요! 저는 KAIST <strong>IT경영 석사과정</strong>에 재학 중인 IT 기획자 <strong>신희진</strong>입니다. IT 기획과 디지털 전환 분야에서 일해 왔습니다.</p>
+    <p data-i18n="about2">복잡한 시스템을 명확한 계획으로 바꾸는 일을 좋아합니다 — 기업 IT 로드맵이든, 제품 아이디어든, 개인 투자 논문이든 말이죠. 이 페이지는 2026년 가을학기를 위한 저의 작은 웹 공간입니다.</p>
+    <p data-i18n-html="about3">집에서는 두 아이의 아빠 — <strong>9살 아들</strong>과 <strong>4살 딸</strong>과 함께 즐겁게 지내고 있습니다.</p>
   </section>
 
   <section>
-    <h2 class="sec-title">Interests</h2>
+    <h2 class="sec-title" data-i18n="secInterests">관심사</h2>
     <div class="cards">
       <div class="card">
         <div class="emoji">🧭</div>
-        <h3>IT Strategy &amp; Planning</h3>
-        <p>Roadmaps, enterprise architecture, and making technology choices that serve business goals.</p>
+        <h3 data-i18n="int1t">IT 전략·기획</h3>
+        <p data-i18n="int1d">로드맵, 엔터프라이즈 아키텍처, 그리고 비즈니스 목표에 기여하는 기술 선택.</p>
       </div>
       <div class="card">
         <div class="emoji">⚙️</div>
-        <h3>Digital Transformation</h3>
-        <p>How organizations actually change — people, process, and platforms together.</p>
+        <h3 data-i18n="int2t">디지털 전환</h3>
+        <p data-i18n="int2d">조직이 실제로 변하는 방식 — 사람, 프로세스, 플랫폼이 함께.</p>
       </div>
       <div class="card">
         <div class="emoji">📈</div>
-        <h3>Investing</h3>
-        <p>Member of an investment study club. Currently fascinated by semiconductors and AI infrastructure.</p>
+        <h3 data-i18n="int3t">투자</h3>
+        <p data-i18n="int3d">투자 스터디 모임(Watchers) 회원. 요즘은 반도체와 AI 인프라에 푹 빠져 있습니다.</p>
       </div>
       <div class="card">
         <div class="emoji">☁️</div>
-        <h3>AWS Certified Solutions Architect</h3>
-        <p>Designing cloud architectures that are secure, scalable, and cost-aware — certified, not just curious.</p>
+        <h3 data-i18n="int4t">AWS 공인 솔루션스 아키텍트</h3>
+        <p data-i18n="int4d">안전하고 확장 가능하며 비용 효율적인 클라우드 아키텍처 설계 — 자격증 보유.</p>
       </div>
       <div class="card">
         <div class="emoji">🧩</div>
-        <h3>Escape-Room Dad</h3>
-        <p>Designs 5-stage puzzle hunts at home — math and riddle challenges where the kids crack codes to win snacks.</p>
+        <h3 data-i18n="int5t">방탈출 아빠</h3>
+        <p data-i18n="int5d">집에서 5단계 퍼즐 헌트를 기획 — 아이들이 암호를 풀어 간식을 얻는 수학·퀴즈 도전.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2 class="sec-title">Now</h2>
+    <h2 class="sec-title" data-i18n="secNow">요즘</h2>
     <ul class="now-list">
       <li>
-        <span class="date">Fall 2026</span>
-        <p><strong>KAIST IT Management</strong> — taking courses, building things, meeting sharp people.</p>
+        <span class="date" data-i18n="now1d">2026 가을</span>
+        <p data-i18n-html="now1t"><strong>KAIST IT경영</strong> — 수업을 듣고, 만들고, 멋진 사람들을 만나고 있습니다.</p>
       </li>
       <li>
-        <span class="date">Oct 2026</span>
-        <p>Preparing a <strong>seminar talk</strong> on our investment club's second-half plan.</p>
+        <span class="date" data-i18n="now2d">2026.10</span>
+        <p data-i18n-html="now2t">투자 동아리 <strong>하반기 계획 세미나 발표</strong>를 준비하고 있습니다.</p>
       </li>
       <li>
-        <span class="date">Always</span>
-        <p>Learning in public — this page included. Feedback welcome via GitHub.</p>
+        <span class="date" data-i18n="now3d">언제나</span>
+        <p data-i18n="now3t">공개적으로 배우기 — 이 페이지도 그 일환입니다. GitHub으로 피드백 환영합니다.</p>
       </li>
     </ul>
   </section>
 
   <section id="contact">
-    <h2 class="sec-title">Say hello</h2>
+    <h2 class="sec-title" data-i18n="secContact">연락하기</h2>
     <div class="card">
       <div class="emoji">☕</div>
-      <h3>Coffee chats welcome</h3>
-      <p>
-        Always happy to chat about IT strategy, cloud architecture, career
-        growth, or investing. The best way to reach me is LinkedIn —
-        just say hi!
-      </p>
+      <h3 data-i18n="contactT">커피챗 환영</h3>
+      <p data-i18n="contactD">IT 전략, 클라우드 아키텍처, 커리어 성장, 투자에 대해 언제든 대화 환영합니다. LinkedIn으로 편하게 연락 주세요!</p>
       <div class="cta-row">
-        <a class="btn primary" href="https://www.linkedin.com/in/heejin-shin" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/heejin-shin" target="_blank" rel="noopener" data-i18n="btnLinkedIn">LinkedIn에서 연결하기 ↗</a>
       </div>
     </div>
   </section>
@@ -226,10 +232,141 @@
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
-    <span>© 2026 Heejin Shin · Built with plain HTML &amp; CSS</span>
-    <span><a href="https://www.linkedin.com/in/heejin-shin" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/zzangparty-blip" target="_blank" rel="noopener">github.com/zzangparty-blip</a></span>
+    <span data-i18n="footerNote">© 2026 신희진 · 순수 HTML & CSS로 제작</span>
+    <span><a href="https://www.linkedin.com/in/heejin-shin" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/heejin-shin-2026" target="_blank" rel="noopener">github.com/heejin-shin-2026</a></span>
   </div>
 </footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var I18N = {
+    ko: {
+      title: "신희진 — KAIST IT경영",
+      metaDesc: "KAIST IT경영 석사과정 신희진의 개인 페이지.",
+      kicker: "KAIST · IT경영 · 2026 가을학기",
+      nameMain: "신희진",
+      nameSub: "Heejin Shin",
+      tagline: "기술과 비즈니스가 만나는 지점에서 일하는 <strong>IT 기획자</strong> — KAIST에서 IT경영 석사과정을 밟으며 디지털 전환, 전략, 투자를 탐구하고 있습니다.",
+      btnAbout: "소개",
+      scrollHint: "스크롤 ↓",
+      secAbout: "소개",
+      about1: "안녕하세요! 저는 KAIST <strong>IT경영 석사과정</strong>에 재학 중인 IT 기획자 <strong>신희진</strong>입니다. IT 기획과 디지털 전환 분야에서 일해 왔습니다.",
+      about2: "복잡한 시스템을 명확한 계획으로 바꾸는 일을 좋아합니다 — 기업 IT 로드맵이든, 제품 아이디어든, 개인 투자 논문이든 말이죠. 이 페이지는 2026년 가을학기를 위한 저의 작은 웹 공간입니다.",
+      about3: "집에서는 두 아이의 아빠 — <strong>9살 아들</strong>과 <strong>4살 딸</strong>과 함께 즐겁게 지내고 있습니다.",
+      secInterests: "관심사",
+      int1t: "IT 전략·기획",
+      int1d: "로드맵, 엔터프라이즈 아키텍처, 그리고 비즈니스 목표에 기여하는 기술 선택.",
+      int2t: "디지털 전환",
+      int2d: "조직이 실제로 변하는 방식 — 사람, 프로세스, 플랫폼이 함께.",
+      int3t: "투자",
+      int3d: "투자 스터디 모임(Watchers) 회원. 요즘은 반도체와 AI 인프라에 푹 빠져 있습니다.",
+      int4t: "AWS 공인 솔루션스 아키텍트",
+      int4d: "안전하고 확장 가능하며 비용 효율적인 클라우드 아키텍처 설계 — 자격증 보유.",
+      int5t: "방탈출 아빠",
+      int5d: "집에서 5단계 퍼즐 헌트를 기획 — 아이들이 암호를 풀어 간식을 얻는 수학·퀴즈 도전.",
+      secNow: "요즘",
+      now1d: "2026 가을",
+      now1t: "<strong>KAIST IT경영</strong> — 수업을 듣고, 만들고, 멋진 사람들을 만나고 있습니다.",
+      now2d: "2026.10",
+      now2t: "투자 동아리 <strong>하반기 계획 세미나 발표</strong>를 준비하고 있습니다.",
+      now3d: "언제나",
+      now3t: "공개적으로 배우기 — 이 페이지도 그 일환입니다. GitHub으로 피드백 환영합니다.",
+      secContact: "연락하기",
+      contactT: "커피챗 환영",
+      contactD: "IT 전략, 클라우드 아키텍처, 커리어 성장, 투자에 대해 언제든 대화 환영합니다. LinkedIn으로 편하게 연락 주세요!",
+      btnLinkedIn: "LinkedIn에서 연결하기 ↗",
+      footerNote: "© 2026 신희진 · 순수 HTML & CSS로 제작"
+    },
+    en: {
+      title: "Heejin Shin — KAIST MSIT",
+      metaDesc: "Personal page of Heejin Shin, KAIST IT Management master's student.",
+      kicker: "KAIST · IT Management · Fall 2026",
+      nameMain: "Heejin Shin",
+      nameSub: "신희진",
+      tagline: "IT planner working at the intersection of <strong>technology &amp; business</strong> — currently pursuing a master's in IT Management at KAIST while exploring digital transformation, strategy, and investing.",
+      btnAbout: "About me",
+      scrollHint: "Scroll ↓",
+      secAbout: "About",
+      about1: "Hi! I'm <strong>Heejin Shin (신희진)</strong>, a graduate student in <strong>IT Management at KAIST</strong> and an IT professional with experience in IT planning and digital transformation.",
+      about2: "I like turning complex systems into clear plans — whether that's an enterprise IT roadmap, a product idea, or a personal investment thesis. This page is my little corner of the web for the Fall 2026 term.",
+      about3: "At home, I'm a dad of two — a <strong>9-year-old son</strong> and a <strong>4-year-old daughter</strong> — and we're having a blast together.",
+      secInterests: "Interests",
+      int1t: "IT Strategy & Planning",
+      int1d: "Roadmaps, enterprise architecture, and making technology choices that serve business goals.",
+      int2t: "Digital Transformation",
+      int2d: "How organizations actually change — people, process, and platforms together.",
+      int3t: "Investing",
+      int3d: "Member of an investment study club. Currently fascinated by semiconductors and AI infrastructure.",
+      int4t: "AWS Certified Solutions Architect",
+      int4d: "Designing cloud architectures that are secure, scalable, and cost-aware — certified, not just curious.",
+      int5t: "Escape-Room Dad",
+      int5d: "Designs 5-stage puzzle hunts at home — math and riddle challenges where the kids crack codes to win snacks.",
+      secNow: "Now",
+      now1d: "Fall 2026",
+      now1t: "<strong>KAIST IT Management</strong> — taking courses, building things, meeting sharp people.",
+      now2d: "Oct 2026",
+      now2t: "Preparing a <strong>seminar talk</strong> on our investment club's second-half plan.",
+      now3d: "Always",
+      now3t: "Learning in public — this page included. Feedback welcome via GitHub.",
+      secContact: "Say hello",
+      contactT: "Coffee chats welcome",
+      contactD: "Always happy to chat about IT strategy, cloud architecture, career growth, or investing. The best way to reach me is LinkedIn — just say hi!",
+      btnLinkedIn: "Connect on LinkedIn ↗",
+      footerNote: "© 2026 Heejin Shin · Built with plain HTML & CSS"
+    }
+  };
+
+  function setLang(lang) {
+    if (lang !== "ko" && lang !== "en") lang = "ko";
+    var dict = I18N[lang];
+    document.documentElement.setAttribute("lang", lang);
+    document.title = dict.title;
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", dict.metaDesc);
+
+    var plain = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < plain.length; i++) {
+      var key = plain[i].getAttribute("data-i18n");
+      if (dict[key] != null) plain[i].textContent = dict[key];
+    }
+    var rich = document.querySelectorAll("[data-i18n-html]");
+    for (var j = 0; j < rich.length; j++) {
+      var rkey = rich[j].getAttribute("data-i18n-html");
+      if (dict[rkey] != null) rich[j].innerHTML = dict[rkey];
+    }
+
+    var btns = document.querySelectorAll(".lang-switch button");
+    for (var k = 0; k < btns.length; k++) {
+      var on = btns[k].getAttribute("data-setlang") === lang;
+      if (on) btns[k].classList.add("active");
+      else btns[k].classList.remove("active");
+      btns[k].setAttribute("aria-pressed", on ? "true" : "false");
+    }
+
+    try { localStorage.setItem("hs-lang", lang); } catch (e) {}
+  }
+
+  var btnsInit = document.querySelectorAll(".lang-switch button");
+  for (var b = 0; b < btnsInit.length; b++) {
+    btnsInit[b].addEventListener("click", function () {
+      setLang(this.getAttribute("data-setlang"));
+    });
+  }
+
+  var initial = "ko";
+  try {
+    var q = new URLSearchParams(window.location.search).get("lang");
+    if (q === "ko" || q === "en") initial = q;
+    else {
+      var saved = localStorage.getItem("hs-lang");
+      if (saved === "ko" || saved === "en") initial = saved;
+    }
+  } catch (e) {}
+  setLang(initial);
+})();
+</script>
 
 </body>
 </html>
